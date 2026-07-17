@@ -1,3 +1,4 @@
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Cpu, ShieldCheck, Layers, KanbanSquare, Calendar } from "lucide-react";
 
@@ -49,6 +50,27 @@ export default function ProjectCard() {
   const dupeProjets = [...projetsDeveloppes, ...projetsDeveloppes];
   const dupeTechs = [...technologies, ...technologies, ...technologies];
 
+  // --- Dynamic Width Calculation for Carousels ---
+  const projectsRef = useRef(null);
+  const techsRef = useRef(null);
+  const [projectsWidth, setProjectsWidth] = useState(0);
+  const [techsWidth, setTechsWidth] = useState(0);
+
+  useEffect(() => {
+    if (projectsRef.current) {
+      // Calculate the width of the original set of projects
+      const originalProjects = projectsRef.current.children;
+      const totalWidth = Array.from(originalProjects).slice(0, projetsDeveloppes.length).reduce((acc, el) => acc + el.offsetWidth + 24, 0); // 24 is for gap-6 (1.5rem)
+      setProjectsWidth(totalWidth);
+    }
+    if (techsRef.current) {
+      const originalTechs = techsRef.current.children;
+      const totalWidth = Array.from(originalTechs).slice(0, technologies.length).reduce((acc, el) => acc + el.offsetWidth + 16, 0); // 16 is for gap-4 (1rem)
+      setTechsWidth(totalWidth);
+    }
+  }, [projetsDeveloppes.length, technologies.length]);
+  // --- End of Dynamic Width Calculation ---
+
   return (
     <section id="projects" className="py-20 overflow-hidden w-full bg-slate-950/20">
       
@@ -63,11 +85,12 @@ export default function ProjectCard() {
       {/* ---------------- CARROUSEL 1 : LES PROJETS AUTODÉFILANTS ---------------- */}
       <div className="flex overflow-hidden w-full relative mb-14 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-950 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-950 after:to-transparent">
         <motion.div 
+          ref={projectsRef}
           className="flex gap-6 whitespace-nowrap px-4"
-          animate={{ x: [0, -1800] }}
+          animate={{ x: [0, -projectsWidth] }}
           transition={{
             ease: "linear",
-            duration: 30, // Vitesse de croisière du défilement des projets
+            duration: projectsWidth / 100, // Adjust duration based on width for consistent speed
             repeat: Infinity,
           }}
           whileHover={{ animationPlayState: "paused" }} // Met en pause au survol de la souris
@@ -115,12 +138,13 @@ export default function ProjectCard() {
       {/* ---------------- CARROUSEL 2 : LES TECHNOLOGIES AUTODÉFILANTES ---------------- */}
       <div className="flex overflow-hidden w-full relative before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-950 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-950 after:to-transparent">
         <motion.div 
+          ref={techsRef}
           className="flex gap-4 whitespace-nowrap py-2"
           // Déplacement de gauche à droite (valeurs inverses [ -1000, 0 ]) pour un effet de parallaxe croisé
-          animate={{ x: [-1200, 0] }}
+          animate={{ x: [-techsWidth, 0] }}
           transition={{
             ease: "linear",
-            duration: 20, // Un peu plus rapide pour les outils
+            duration: techsWidth / 100, // Adjust duration based on width
             repeat: Infinity,
           }}
           whileHover={{ animationPlayState: "paused" }}

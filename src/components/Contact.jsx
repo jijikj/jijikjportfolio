@@ -4,8 +4,19 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   // Chargement de l'ID Formspree depuis les variables d'environnement de Vite
-  const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_ID);
+  const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+  const [state, handleSubmit] = useForm(formspreeId);
 
+  if (!formspreeId) {
+    return (
+      <section id="contact" className="py-20 px-4 max-w-xl mx-auto text-center relative z-10">
+        <div className="bg-yellow-500/10 border border-yellow-500/30 p-8 rounded-3xl shadow-2xl space-y-4">
+          <h3 className="text-2xl font-black text-yellow-300">Configuration requise</h3>
+          <p className="text-yellow-400 text-sm leading-relaxed">Veuillez définir votre ID Formspree dans la variable d'environnement `VITE_FORMSPREE_ID` pour activer le formulaire de contact.</p>
+        </div>
+      </section>
+    );
+  }
   if (state.succeeded) {
     return (
       <section id="contact" className="py-20 px-4 max-w-xl mx-auto text-center relative z-10">
