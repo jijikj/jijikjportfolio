@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nom": "Plateforme Billeterie NFT",
+    "description": "Développement d'une plateforme de billetterie sportive décentralisée...",
+    "technos": ["React.js", "Solidity", "Tailwind"],
+    "image": "https://via.placeholder.com/400x250",
+    "lienGit": "https://github.com/votre-pseudo/projet1",
+    "lienDemo": "https://mon-projet-billeterie.vercel.app" 
+  },
+  {
+    "id": 2,
+    "nom": "Système de Gestion de Stock",
+    "description": "Conception et déploiement d'une application moderne de suivi...",
+    "technos": ["Next.js", "Firebase", "Tailwind"],
+    "image": "https://via.placeholder.com/400x250",
+    "lienGit": "https://github.com/votre-pseudo/projet2",
+    "lienDemo": "https://coloring-book-jiarkhadija.vercel.app/" 
+  }
+]
