@@ -6,15 +6,34 @@
     "technos": ["React.js", "Solidity", "Tailwind"],
     "image": "https://via.placeholder.com/400x250",
     "lienGit": "https://github.com/votre-pseudo/projet1",
-    "lienDemo": "https://mon-projet-billeterie.vercel.app" 
+    "lienDemo": "https://app-sport-pfe-git-main-khadijajiarepolytechnis-projects.vercel.app/" 
   },
   {
     "id": 2,
-    "nom": "Système de Gestion de Stock",
+    "nom": "Portfolio Fiverr",
     "description": "Conception et déploiement d'une application moderne de suivi...",
     "technos": ["Next.js", "Firebase", "Tailwind"],
     "image": "https://via.placeholder.com/400x250",
     "lienGit": "https://github.com/votre-pseudo/projet2",
-    "lienDemo": "https://coloring-book-jiarkhadija.vercel.app/" 
+    "lienDemo": "https://coloring-book-jiarkhadija-e6s1.vercel.app" 
+  },
+   {
+    "id": 3,
+    "nom": "Site Plobbier ",
+    "description": "Conception et déploiement d'une application moderne de suivi...",
+    "technos": ["Next.js", "Firebase", "Tailwind"],
+    "image": "https://via.placeholder.com/400x250",
+    "lienGit": "https://github.com/votre-pseudo/projet2",
+    "lienDemo": "https://site-plombier-beige.vercel.app/" 
+  },
+   {
+    "id": 4,
+    "nom": "Système de Gestion de Stock Temps Réel ",
+    "description": "Conception et déploiement d'une application moderne de suivi...",
+    "technos": ["Next.js", "Firebase", "Tailwind","TypeScript"],
+    "image": "https://via.placeholder.com/400x250",
+    "lienGit": "https://github.com/jijikj/supplysync-erp",
+    "lienDemo": "https://github.com/jijikj/supplysync-erp" 
   }
+  
 ]
